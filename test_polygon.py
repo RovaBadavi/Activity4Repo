@@ -1,5 +1,5 @@
 from polygon import Polygon
-
+import pytest
 
 def test_polygon_initialization():
     p1 = Polygon("Triangle", [3.0, 3.0, 3.0])
@@ -36,3 +36,16 @@ def test_polygon_inequality():
     assert triangle.get_name() != square.get_name()
     assert triangle.get_sides() != square.get_sides()
 
+def test_polygon_string():
+    triangle = Polygon("Triangle", [3.0, 3.0, 3.0])
+    string = f"{triangle.get_name()} with sides: {triangle.get_sides()}"
+    assert string == triangle.__str__()
+
+def test_polygon_calculate_circumference():
+    triangle = Polygon("Triangle", [3, 3, 3])
+    square = Polygon("Square", [4, 4, 4, 4])
+    hexagon = Polygon("Hexagon", [6, 6, 6, 6, 6, 6.00001])
+
+    assert triangle.calculate_circumference() == pytest.approx(9)
+    assert square.calculate_circumference() == pytest.approx(16)
+    assert hexagon.calculate_circumference() == pytest.approx(36)

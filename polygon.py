@@ -20,4 +20,24 @@ class Polygon:
     def __ne__(self, other):
         return not self.__eq__(other) 
     
+    def __str__(self):
+        return f"{self.get_name()} with sides: {self.get_sides()}"
     
+    def calculate_circumference(self):
+        return sum(self.sides)
+    
+def main():
+    triangle = Polygon("Triangle", [3, 3, 3])
+    square = Polygon("Square", [4, 4, 4, 4])
+    hexagon = Polygon("Hexagon", [6, 6, 6, 6, 6, 6])
+
+    print(triangle)
+    print(square)
+    print(hexagon)
+
+    print(triangle.calculate_circumference())
+
+
+
+if __name__ == "__main__":
+    main()
